@@ -7,9 +7,9 @@
 {
   imports =
     [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware-configuration.nix # Include the results of the hardware scan.
       ./system.nix
+      ./nvidia.nix
     ];
 
   # Enable the X11 windowing system.
