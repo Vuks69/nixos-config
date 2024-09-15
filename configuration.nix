@@ -52,9 +52,13 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    firefox
     vscode
     git
+    tig
+    gh
+
+    firefox
+    
     nnn
     fzf
     kitty
