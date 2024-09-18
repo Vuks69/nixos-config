@@ -10,6 +10,7 @@
       ./hardware-configuration.nix # Include the results of the hardware scan.
       ./system.nix
       ./nvidia.nix
+      ./zfs.nix
     ];
 
   # Enable the X11 windowing system.
