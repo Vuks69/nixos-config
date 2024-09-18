@@ -7,7 +7,7 @@
   hardware.nvidia = {
     modesetting.enable = true; # required
     open = false; # open drivers are kind of a beta
-    nvidiaSettings = false;
+    nvidiaSettings = true;
 
     powerManagement = {
       enable = false; # playing it safe for now
