@@ -16,6 +16,9 @@ switch:
 dry-build:
 	$(NIXCMD) $(NIXFLAGS) dry-build
 
+generate-config:
+	sudo nixos-generate-config --show-hardware-config >hardware-configuration.nix
+
 list-generations:
 	sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 
