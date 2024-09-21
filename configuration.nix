@@ -24,31 +24,16 @@
 
     windowManager.i3.enable = true;
 
-    # Configure keymap in X11
     xkb.layout = "pl";
-    # services.xserver.xkb.options = "eurosign:e,caps:escape";
   };
 
   services.displayManager.defaultSession = "none+i3";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vuks = {
     isNormalUser = true;
     shell = pkgs.bash;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    # packages = with pkgs; [
-    # ];
   };
 
   # List packages installed in system profile.
@@ -72,37 +57,37 @@
     wget
     curl
     lm_sensors
-    openssh
     lxqt.lxqt-policykit
   ];
 
   # Some programs need SUID wrappers, can be configured further or are started in user sessions.
   # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+      pinentryPackage = pkgs.pinentry-gtk2;
+    };
   };
 
   # List services that you want to enable:
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = true;
-    openFirewall = true;
+  services = {
+    openssh = {
+      enable = true;
+      settings.PasswordAuthentication = true;
+      openFirewall = true;
+    };
+    xrdp = {
+      enable = true;
+      defaultWindowManager = "i3";
+      openFirewall = true;
+    };
   };
 
-  services.xrdp = {
-    enable = true;
-    defaultWindowManager = "i3";
-    openFirewall = true;
+  security = {
+    polkit.enable = true;
+    pam.services.vuks.startSession = true;
   };
-
-  security.polkit.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ 22 ];
-  # networking.firewall.allowedUDPPorts = [ 22 ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # ====================================
   # No touching below this line.

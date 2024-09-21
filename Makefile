@@ -1,23 +1,19 @@
-.PHONY: test boot switch dry-build list-generations clean
+.PHONY: test boot switch build dry-build upgrade full-maintenance generate-config list-generations clean full-maintenance
 
 NIXCONFIG = ./configuration.nix # relative to the makefile
 NIXCMD = sudo nixos-rebuild
 NIXFLAGS = -I nixos-config=$(NIXCONFIG)
 
-test:
-	$(NIXCMD) $(NIXFLAGS) test
+test boot switch build dry-build:
+	$(NIXCMD) $(NIXFLAGS) $@
 
-boot:
-	$(NIXCMD) $(NIXFLAGS) boot
+upgrade:
+	$(NIXCMD) $(NIXFLAGS) switch --upgrade
 
-switch:
-	$(NIXCMD) $(NIXFLAGS) switch
-
-dry-build:
-	$(NIXCMD) $(NIXFLAGS) dry-build
+full-maintenance: clean upgrade generate-config
 
 generate-config:
-	sudo nixos-generate-config --show-hardware-config >hardware-configuration.nix
+	sudo nixos-generate-config --show-hardware-config | nixpkgs-fmt >hardware-configuration.nix
 
 list-generations:
 	sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
