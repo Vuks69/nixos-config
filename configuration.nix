@@ -26,10 +26,11 @@
       enable = true;
       extraPackages = with pkgs; [
         rofi
+        i3status
+        i3lock
       ];
     };
     excludePackages = with pkgs; [
-      dmenu
       xterm
     ];
     xkb.layout = "pl";
