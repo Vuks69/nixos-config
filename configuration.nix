@@ -11,6 +11,7 @@
       ./system.nix
       ./nvidia.nix
       ./zfs.nix
+      ./samba.nix
     ];
 
   # Enable the X11 windowing system.
@@ -49,10 +50,27 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.vuks = {
-    isNormalUser = true;
-    shell = pkgs.bash;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  users = {
+    groups.smb-users = { };
+    users = {
+      vuks = {
+        isNormalUser = true;
+        shell = pkgs.bash;
+        extraGroups = [
+          "wheel" # Enable ‘sudo’ for the user.
+          "smb-users"
+        ];
+      };
+      anna = {
+        isSystemUser = true;
+        group = "smb-users";
+      };
+      smb-guest = {
+        isSystemUser = true;
+        group = "smb-users";
+        description = "SMB share guest user account";
+      };
+    };
   };
 
   # List packages installed in system profile.
