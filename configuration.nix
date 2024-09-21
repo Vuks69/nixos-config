@@ -29,6 +29,16 @@
 
   services.displayManager.defaultSession = "none+i3";
 
+  fonts = {
+    packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "FiraCode" "Noto" ]; })
+    ];
+    fontconfig.defaultFonts = {
+      monospace = [ "FiraCode Nerd Font Mono Ret" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vuks = {
     isNormalUser = true;
