@@ -22,8 +22,16 @@
       greeter.enable = true;
     };
 
-    windowManager.i3.enable = true;
-
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        rofi
+      ];
+    };
+    excludePackages = with pkgs; [
+      dmenu
+      xterm
+    ];
     xkb.layout = "pl";
   };
 
@@ -59,7 +67,6 @@
     nil
     gnumake
 
-    rofi
     tree
     file
     wget
@@ -67,6 +74,10 @@
     lm_sensors
     lxqt.lxqt-policykit
   ];
+  environment.variables = {
+    TERMINAL = "kitty";
+    EDITOR = "nano";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are started in user sessions.
   # programs.mtr.enable = true;
