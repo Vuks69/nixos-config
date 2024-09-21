@@ -49,12 +49,9 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     vscode
-    git
     tig
     gh
 
-    firefox
-    
     nnn
     fzf
     kitty
@@ -62,6 +59,7 @@
     nil
     gnumake
 
+    rofi
     tree
     file
     wget
@@ -73,6 +71,9 @@
   # Some programs need SUID wrappers, can be configured further or are started in user sessions.
   # programs.mtr.enable = true;
   programs = {
+    git.enable = true;
+    starship.enable = true;
+    firefox.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -82,6 +83,7 @@
 
   # List services that you want to enable:
   services = {
+    cron.enable = true;
     openssh = {
       enable = true;
       settings.PasswordAuthentication = true;
@@ -94,10 +96,7 @@
     };
   };
 
-  security = {
-    polkit.enable = true;
-    pam.services.vuks.startSession = true;
-  };
+  security.polkit.enable = true;
 
   # ====================================
   # No touching below this line.
