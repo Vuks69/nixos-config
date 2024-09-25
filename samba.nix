@@ -24,14 +24,12 @@
         public = "yes";
         browseable = "yes";
         writeable = "yes";
-        "admin users" = "vuks";
       };
       torrents = {
         path = "/warehouse/storage-k/torrents";
         public = "no";
         browseable = "no";
         "valid users" = "vuks";
-        "admin users" = "vuks";
       };
     };
   };
