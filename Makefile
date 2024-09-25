@@ -10,7 +10,7 @@ test boot switch build dry-build:
 upgrade:
 	$(NIXCMD) $(NIXFLAGS) switch --upgrade
 
-full-maintenance: clean upgrade generate-config
+full-maintenance: clean generate-config upgrade
 
 generate-config:
 	sudo nixos-generate-config --show-hardware-config | nixpkgs-fmt >hardware-configuration.nix
