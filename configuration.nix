@@ -1,6 +1,7 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+# There are some things that need to be done outside of configfiles, such as setting passwords.
+# ONETIME: actions that have to be done once, when defining the
+#          given service or functionality for the first time
+# ALWAYS:  actions that have to be done on every rebuild
 
 { config, lib, pkgs, ... }:
 
@@ -50,7 +51,7 @@
     };
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # ONETIME(PER_USER): Set a password with ‘passwd’ if login needed
   users = {
     groups.smb-users = { };
     groups.upsmon = { };
@@ -59,7 +60,7 @@
         isNormalUser = true;
         shell = pkgs.bash;
         extraGroups = [
-          "wheel" # Enable ‘sudo’ for the user.
+          "wheel"
           "smb-users"
         ];
       };
@@ -74,6 +75,8 @@
       };
       upsmon = {
         isSystemUser = true;
+        # ONETIME: store this user's password in home (plaintext)
+        #          this is needed for providing the password to UPS monitoring - see ups.nix
         home = "/home/upsmon";
         createHome = true;
         group = "upsmon";
@@ -88,16 +91,14 @@
     tig
     gh
 
-    nnn
-    fzf
     kitty
     nixpkgs-fmt
     nil
     gnumake
 
+    bc
     btop
     screen
-    tree
     file
     wget
     curl
