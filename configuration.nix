@@ -12,6 +12,7 @@
       ./nvidia.nix
       ./zfs.nix
       ./samba.nix
+      ./ups.nix
     ];
 
   # Enable the X11 windowing system.
@@ -52,6 +53,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users = {
     groups.smb-users = { };
+    groups.upsmon = { };
     users = {
       vuks = {
         isNormalUser = true;
@@ -69,6 +71,13 @@
         isSystemUser = true;
         group = "smb-users";
         description = "SMB share guest user account";
+      };
+      upsmon = {
+        isSystemUser = true;
+        home = "/home/upsmon";
+        createHome = true;
+        group = "upsmon";
+        description = "UPS monitoring technical user";
       };
     };
   };
