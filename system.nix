@@ -23,6 +23,4 @@
 
   # Allow installing proprietary crap
   nixpkgs.config.allowUnfree = true;
-
-  system.autoUpgrade.enable = true;
 }
