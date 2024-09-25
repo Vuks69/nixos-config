@@ -8,7 +8,7 @@
   networking.hostId = "39ace0d9";
 
   # Import pools on reboot
-  boot.zfs.extraPools = [ "storage-k" ];
+  boot.zfs.extraPools = [ "tank" ];
 
   # Automatic scrubbing
   services.zfs.autoScrub.enable = true;

@@ -20,13 +20,13 @@
     '';
     shares = {
       public = {
-        path = "/warehouse/storage-k/public";
+        path = "/warehouse/public";
         public = "yes";
         browseable = "yes";
         writeable = "yes";
       };
-      torrents = {
-        path = "/warehouse/storage-k/torrents";
+      private = {
+        path = "/warehouse/private";
         public = "no";
         browseable = "no";
         "valid users" = "vuks";
