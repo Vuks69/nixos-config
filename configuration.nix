@@ -86,6 +86,8 @@
     nil
     gnumake
 
+    btop
+    screen
     tree
     file
     wget
