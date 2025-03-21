@@ -14,6 +14,7 @@
       ./zfs.nix
       ./samba.nix
       ./ups.nix
+      ./wireguard.nix
     ];
 
   # Enable the X11 windowing system.
