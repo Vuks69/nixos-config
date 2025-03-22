@@ -15,6 +15,7 @@
       ./samba.nix
       ./ups.nix
       ./wireguard.nix
+      ./shadowsocks.nix
     ];
 
   # Enable the X11 windowing system.
