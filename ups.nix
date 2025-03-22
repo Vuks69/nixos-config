@@ -13,7 +13,7 @@
 
     users."upsmon" = {
       passwordFile = "/home/upsmon/upsmon.password";
-      upsmon = "master";
+      upsmon = "primary";
     };
 
     upsmon.monitor."apc-cs500".user = "upsmon";

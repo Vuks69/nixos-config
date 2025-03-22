@@ -10,15 +10,15 @@
   services.samba = {
     enable = true;
     openFirewall = true;
-    extraConfig = ''
-      client smb encrypt = desired
-      guest account = smb-guest
-      # Lock the service to local network only
-      # Allowlist takes precedence
-      allow hosts = 192.168.0.
-      deny hosts = ALL 
-    '';
-    shares = {
+    settings = {
+      global = {
+        "client smb encrypt" = "desired";
+        "guest account" = "smb-guest";
+        # Lock the service to local network only
+        # Allowlist takes precedence
+        "allow hosts" = "192.168.0.";
+        "deny hosts" = "ALL";
+      };
       public = {
         path = "/warehouse/public";
         public = "yes";
