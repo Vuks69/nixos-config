@@ -142,6 +142,14 @@
 
   security.polkit.enable = true;
 
+  networking.extraHosts =
+  ''
+    192.168.0.2 themonster
+    192.168.0.3 phoenix
+    192.168.0.4 robocop
+    10.0.0.2 vpn.robocop
+  '';
+
   # ====================================
   # No touching below this line.
   # Copy the NixOS configuration file and link it from the resulting system (/run/current-system/configuration.nix).
