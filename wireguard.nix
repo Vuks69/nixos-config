@@ -6,7 +6,6 @@ let
   listenPort = 63013;
   wgExtInterface = "enp3s0";
   wgInterface = "wg0";
-  vpnSSHPort = "50022";
 in
 {
   # https://wiki.nixos.org/wiki/WireGuard
@@ -33,9 +32,8 @@ in
           # For this to work you have to set the dnsserver IP of your router (or dnsserver of choice) in your clients
           postSetup = ''
             ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s ${vpnNetwork} -o ${wgExtInterface} -j MASQUERADE
-            ${pkgs.iptables}/bin/iptables -A PREROUTING -s ${vpnNetwork} -p tcp --dport ${vpnSSHPort} -j REDIRECT --to-port 22
-            ${pkgs.iptables}/bin/iptables -A INPUT -s ${vpnNetwork} -p tcp --dport ${vpnSSHPort} -j ACCEPT
           '';
+
           postShutdown = ''
             ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s ${vpnNetwork} -o ${wgExtInterface} -j MASQUERADE
           '';
