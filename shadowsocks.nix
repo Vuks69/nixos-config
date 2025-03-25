@@ -1,4 +1,7 @@
 { config, lib, pkgs, ... }:
+let
+  shadowsocksPort = 63814;
+in
 {
   environment.systemPackages = with pkgs; [
     shadowsocks-rust
@@ -15,6 +18,9 @@
     };
   };
 
+  networking.firewall.allowedTCPPorts = [ shadowsocksPort ];
+  networking.firewall.allowedUDPPorts = [ shadowsocksPort ];
+
   # mkdir -p /etc/shadowsocks/auth
   # ssservice genkey -m "aes-128-gcm" >/etc/shadowsocks/auth/van-guest.pass
   # Warning: this adds a newline (0a byte) at the end
@@ -24,7 +30,7 @@
     text = ''
     {
       "server": "0.0.0.0",
-      "server_port": 63814,
+      "server_port": ${builtins.toString shadowsocksPort},
       "password": "${lib.removeSuffix "\n" (builtins.readFile /etc/shadowsocks/auth/van-guest.pass)}",
       "method": "aes-256-gcm"
     }
