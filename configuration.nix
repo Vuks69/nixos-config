@@ -95,6 +95,7 @@
     gh
 
     kitty
+    fzf
     nixpkgs-fmt
     nil
     gnumake
@@ -119,6 +120,10 @@
     git.enable = true;
     starship.enable = true;
     firefox.enable = true;
+    fzf = {
+      fuzzyCompletion = true;
+      keybindings = true;
+    };
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
