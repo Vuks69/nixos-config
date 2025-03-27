@@ -1,11 +1,12 @@
-{ config, lib, pkgs, ... }:
-
+let
+  quasselPort = 64242;
+in
 {
   services.quassel = {
     enable = true;
     interfaces = [ "0.0.0.0" ];
-    portNumber = 64242;
+    portNumber = quasselPort;
   };
 
-  networking.firewall.allowedTCPPorts = [ 64242 ];
+  networking.firewall.allowedTCPPorts = [ quasselPort ];
 }
