@@ -16,6 +16,9 @@ in
       Restart = "always";
       RestartSec = "30";
     };
+    restartTriggers = [
+      config.environment.etc."shadowsocks/config.json".source
+    ];
   };
 
   networking.firewall.allowedTCPPorts = [ shadowsocksPort ];
@@ -29,10 +32,15 @@ in
     mode = "0600";
     text = ''
     {
-      "server": "0.0.0.0",
-      "server_port": ${builtins.toString shadowsocksPort},
-      "password": "${lib.removeSuffix "\n" (builtins.readFile /etc/shadowsocks/auth/van-guest.pass)}",
-      "method": "aes-256-gcm"
+      "servers": [
+        {
+          "server": "0.0.0.0",
+          "server_port": ${builtins.toString shadowsocksPort},
+          "password": "${lib.removeSuffix "\n" (builtins.readFile /etc/shadowsocks/auth/van-guest.pass)}",
+          "method": "aes-256-gcm",
+          "fast_open": true
+        }
+      ]
     }
   '';
   };
