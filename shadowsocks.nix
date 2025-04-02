@@ -8,6 +8,7 @@ in
   ];
 
   systemd.services.shadowsocks = {
+    enable = true;
     description = "Shadowsocks server";
     after = [ "network-online.target" ];
     requires = [ "network-online.target" ];
