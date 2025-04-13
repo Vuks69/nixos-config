@@ -17,6 +17,7 @@
       ./wireguard.nix
       ./shadowsocks.nix
       ./quassel.nix
+      ./wstunnel.nix
       ./monitoring.nix
     ];
 
