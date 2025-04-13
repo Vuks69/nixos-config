@@ -17,6 +17,7 @@
       ./wireguard.nix
       ./shadowsocks.nix
       ./quassel.nix
+      ./monitoring.nix
     ];
 
   # Enable the X11 windowing system.
