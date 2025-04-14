@@ -19,6 +19,7 @@
       ./quassel.nix
       ./wstunnel.nix
       ./monitoring.nix
+      ./proxy-manager.nix
     ];
 
   # Enable the X11 windowing system.
@@ -60,6 +61,7 @@
   users = {
     groups.smb-users = { };
     groups.upsmon = { };
+    groups.nginx = {};
     users = {
       vuks = {
         isNormalUser = true;
@@ -86,6 +88,11 @@
         createHome = true;
         group = "upsmon";
         description = "UPS monitoring technical user";
+      };
+      nginx = {
+        isSystemUser = true;
+        group = "nginx";
+        description = "Nginx Proxy Manager technical user";
       };
     };
   };
