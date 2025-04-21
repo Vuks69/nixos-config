@@ -102,6 +102,7 @@
     vscode
     tig
     gh
+    diff-so-fancy
 
     kitty
     fzf
@@ -115,6 +116,7 @@
     file
     wget
     curl
+    mailutils
     lm_sensors
     lxqt.lxqt-policykit
   ];
