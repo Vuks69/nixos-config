@@ -99,17 +99,18 @@
 
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
+    # Development tools
     vscode
     tig
     gh
     diff-so-fancy
-
-    kitty
-    fzf
     nixpkgs-fmt
     nil
     gnumake
 
+    # Utility tools
+    kitty
+    fzf
     bc
     btop
     screen
@@ -117,7 +118,10 @@
     wget
     curl
     mailutils
+
+    # System tools
     lm_sensors
+    smartmontools
     lxqt.lxqt-policykit
   ];
   environment.variables = {
