@@ -6,21 +6,23 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix # Include the results of the hardware scan.
-      ./system.nix
-      ./nvidia.nix
-      ./zfs.nix
-      ./samba.nix
-      ./ups.nix
-      ./wireguard.nix
-      ./shadowsocks.nix
-      ./quassel.nix
-      ./wstunnel.nix
-      ./monitoring.nix
-      ./proxy-manager.nix
-    ];
+  imports = [
+    # System configurations
+    ./hardware-configuration.nix
+    ./nvidia.nix
+    ./system.nix
+    ./ups.nix
+    ./zfs.nix
+
+    # Services
+    ./monitoring.nix
+    ./proxy-manager.nix
+    ./quassel.nix
+    ./samba.nix
+    ./shadowsocks.nix
+    ./wireguard.nix
+    ./wstunnel.nix
+  ];
 
   # Enable the X11 windowing system.
   services.xserver = {
@@ -61,7 +63,7 @@
   users = {
     groups.smb-users = { };
     groups.upsmon = { };
-    groups.nginx = {};
+    groups.nginx = { };
     users = {
       vuks = {
         isNormalUser = true;
@@ -164,8 +166,7 @@
 
   security.polkit.enable = true;
 
-  networking.extraHosts =
-  ''
+  networking.extraHosts = ''
     192.168.0.2 themonster
     192.168.0.3 phoenix
     192.168.0.4 robocop
