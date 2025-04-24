@@ -15,6 +15,7 @@
     ./zfs.nix
 
     # Services
+    ./jellyfin.nix
     ./monitoring.nix
     ./proxy-manager.nix
     ./quassel.nix
