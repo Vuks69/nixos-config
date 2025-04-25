@@ -29,6 +29,7 @@
         path = "/warehouse/private";
         public = "no";
         browseable = "no";
+        writeable = "yes";
         "valid users" = "vuks";
       };
     };
