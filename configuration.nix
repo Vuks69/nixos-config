@@ -145,6 +145,9 @@
     mailutils
 
     # System tools
+    dig
+    pciutils
+    usbutils
     lm_sensors
     smartmontools
     lxqt.lxqt-policykit
