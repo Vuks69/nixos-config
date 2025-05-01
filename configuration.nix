@@ -18,6 +18,7 @@
     ./jellyfin.nix
     ./monitoring.nix
     ./proxy-manager.nix
+    ./qbittorrent.nix
     ./quassel.nix
     ./samba.nix
     ./shadowsocks.nix
@@ -62,9 +63,13 @@
 
   # ONETIME(PER_USER): Set a password with ‘passwd’ if login needed
   users = {
-    groups.smb-users = { };
-    groups.upsmon = { };
-    groups.nginx = { };
+    groups = {
+      smb-users = { };
+      upsmon = { };
+      nginx = { };
+      qbittorrent = { };
+      warehouse = { };
+    };
     users = {
       vuks = {
         isNormalUser = true;
@@ -72,15 +77,22 @@
         extraGroups = [
           "wheel"
           "smb-users"
+          "warehouse"
         ];
       };
       anna = {
         isSystemUser = true;
         group = "smb-users";
+        extraGroups = [
+          "warehouse"
+        ];
       };
       smb-guest = {
         isSystemUser = true;
         group = "smb-users";
+        extraGroups = [
+          "warehouse"
+        ];
         description = "SMB share guest user account";
       };
       upsmon = {
@@ -96,6 +108,16 @@
         isSystemUser = true;
         group = "nginx";
         description = "Nginx Proxy Manager technical user";
+      };
+      qbittorrent = {
+        isSystemUser = true;
+        home = "/home/qbittorrent";
+        createHome = true;
+        group = "qbittorrent";
+        extraGroups = [
+          "warehouse"
+        ];
+        description = "qBittorrent technical user";
       };
     };
   };
