@@ -50,9 +50,7 @@ in
             }
             {
               # phone
-              # Public key of the peer (not a file path).
               publicKey = "MMZ2Ww8g5g7EoqDrk28wR9aLPhsMdSa6W0SAv5bL0nQ=";
-              # List of IPs assigned to this peer within the tunnel subnet. Used to configure routing.
               allowedIPs = [ "10.0.0.3/32" ];
             }
             {
