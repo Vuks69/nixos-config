@@ -143,6 +143,7 @@
     wget
     curl
     mailutils
+    fastfetch
 
     # System tools
     dig
