@@ -22,6 +22,7 @@
     ./quassel.nix
     ./samba.nix
     ./shadowsocks.nix
+    ./webserver.nix
     ./wireguard.nix
     ./wstunnel.nix
   ];
@@ -69,6 +70,7 @@
       nginx = { };
       qbittorrent = { };
       warehouse = { };
+      www = { };
     };
     users = {
       vuks = {
@@ -78,6 +80,7 @@
           "wheel"
           "smb-users"
           "warehouse"
+          "www"
         ];
       };
       anna = {
@@ -107,6 +110,9 @@
       nginx = {
         isSystemUser = true;
         group = "nginx";
+        extraGroups = [
+          "www"
+        ];
         description = "Nginx Proxy Manager technical user";
       };
       qbittorrent = {
