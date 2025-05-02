@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
-  qbittorrentPort = 53246;
+  webUiPort = 53246;
+  listenPort = 51212;
 in
 {
   # NOTE: in order for qbit to work with proxymanager, you need to
@@ -18,12 +19,12 @@ in
       User = "qbittorrent";
       Group = "qbittorrent";
       WorkingDirectory = "/home/qbittorrent";
-      ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox --webui-port=${builtins.toString qbittorrentPort} --confirm-legal-notice";
+      ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox --webui-port=${builtins.toString webUiPort} --confirm-legal-notice";
       Restart = "always";
       RestartSec = "30";
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ qbittorrentPort ];
-  networking.firewall.allowedUDPPorts = [ qbittorrentPort ];
+  networking.firewall.allowedTCPPorts = [ webUiPort listenPort ];
+  networking.firewall.allowedUDPPorts = [ webUiPort listenPort ];
 }
