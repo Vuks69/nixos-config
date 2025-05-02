@@ -12,6 +12,10 @@
 
   networking.hostName = "phoenix"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.nameservers = [ "9.9.9.9" "1.1.1.1" "4.4.4.4" "8.8.8.8" ]; # Use Quad9, Cloudflare, and Google DNS servers.
+  networking.dhcpcd.extraConfig = ''
+    nohook resolv.conf
+  '';
 
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
