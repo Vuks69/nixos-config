@@ -142,6 +142,7 @@
     # Utility tools
     kitty
     fzf
+    bat
     bc
     btop
     screen
