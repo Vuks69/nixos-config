@@ -15,6 +15,7 @@
     ./zfs.nix
 
     # Services
+    ./ddclient.nix
     ./jellyfin.nix
     ./monitoring.nix
     ./proxy-manager.nix
