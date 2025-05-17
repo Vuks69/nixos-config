@@ -55,7 +55,7 @@ in
             }
             {
               # v-guest
-              publicKey = "XaWw9A60tgPeEKV7+M3b0foVwxKtXxNNVDy/qbygE2w=";
+              publicKey = "oL3qzHsMQPWK9ezDAoKyBC6bUC+HtCPbcH3cYFcx+h8=";
               allowedIPs = [ "10.0.0.128/32" ];
             }
           ];
