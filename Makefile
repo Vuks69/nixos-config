@@ -4,7 +4,7 @@ NIXCONFIG = ./configuration.nix # relative to the makefile
 NIXCMD = sudo nixos-rebuild
 NIXFLAGS = -I nixos-config=$(NIXCONFIG)
 
-test boot switch build dry-build:
+switch test boot build dry-build:
 	$(NIXCMD) $(NIXFLAGS) $@
 
 upgrade:
