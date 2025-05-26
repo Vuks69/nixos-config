@@ -4,7 +4,12 @@
 # ALWAYS:  actions that have to be done on every rebuild
 
 { config, lib, pkgs, ... }:
-
+let
+  # ONETIME
+  # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
+  # sudo nix-channel --update
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in
 {
   imports = [
     # System configurations
@@ -140,6 +145,10 @@
     nil
     gnumake
 
+    # AI stuff
+    unstable.code-cursor
+    shell-gpt
+
     # Utility tools
     kitty
     fzf
@@ -175,6 +184,10 @@
     fzf = {
       fuzzyCompletion = true;
       keybindings = true;
+    };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
     nix-ld.enable = true;
     gnupg.agent = {
