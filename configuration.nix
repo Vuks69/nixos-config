@@ -60,7 +60,8 @@ in
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "Noto" ]; })
+      nerd-fonts.fira-code
+      nerd-fonts.noto
     ];
     fontconfig.defaultFonts = {
       monospace = [ "FiraCode Nerd Font Mono Ret" ];
