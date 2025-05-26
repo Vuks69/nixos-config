@@ -7,6 +7,16 @@ in
 {
   services.nginx = {
     enable = true;
+    commonHttpConfig = ''
+      real_ip_header CF-Connecting-IP;
+      set_real_ip_from "127.0.0.1";
+      real_ip_recursive on;
+
+      log_format proxy '$remote_addr | $remote_user [$time_local] '
+                    '"$request" $status $body_bytes_sent '
+                    '"$http_referer" "$http_user_agent"';
+      access_log /var/log/nginx/access.log proxy;
+    '';
     virtualHosts = {
       # Production
       "vuks.dev" = {
