@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 let
   # reused variables
   serverIPs = [ "10.0.0.1/24" ];

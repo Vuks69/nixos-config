@@ -32,17 +32,17 @@ in
   environment.etc."shadowsocks/config.json" = {
     mode = "0600";
     text = ''
-    {
-      "servers": [
-        {
-          "server": "0.0.0.0",
-          "server_port": ${builtins.toString shadowsocksPort},
-          "password": "${lib.removeSuffix "\n" (builtins.readFile /etc/shadowsocks/auth/van-guest.pass)}",
-          "method": "aes-256-gcm",
-          "fast_open": true
-        }
-      ]
-    }
-  '';
+      {
+        "servers": [
+          {
+            "server": "0.0.0.0",
+            "server_port": ${builtins.toString shadowsocksPort},
+            "password": "${lib.removeSuffix "\n" (builtins.readFile /etc/shadowsocks/auth/van-guest.pass)}",
+            "method": "aes-256-gcm",
+            "fast_open": true
+          }
+        ]
+      }
+    '';
   };
 }

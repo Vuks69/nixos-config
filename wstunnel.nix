@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 let
   wstunnelPort = 63514;
   wireguardPort = 63013;

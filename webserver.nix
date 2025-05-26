@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 let
   fileHostingPort = 58383;
   localWebsitePort = 58384;

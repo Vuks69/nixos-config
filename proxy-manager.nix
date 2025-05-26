@@ -1,6 +1,6 @@
 # Driver configuration. Nvidia/nouveau etc.
 
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   systemd.tmpfiles.rules = [

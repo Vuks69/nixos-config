@@ -1,5 +1,5 @@
 # ZFS configuration
-{ config, ... }:
+{ ... }:
 
 {
   # https://openzfs.github.io/openzfs-docs/Getting%20Started/NixOS/index.html#installation

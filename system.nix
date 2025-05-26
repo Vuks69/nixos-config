@@ -1,6 +1,6 @@
 # Mostly low-level system configuration that won't have to be touched often if at all.
 
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   # Use the systemd-boot EFI boot loader.

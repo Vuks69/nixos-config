@@ -3,7 +3,7 @@
 #          given service or functionality for the first time
 # ALWAYS:  actions that have to be done on every rebuild
 
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 let
   # ONETIME
   # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
