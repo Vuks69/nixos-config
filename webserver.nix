@@ -41,7 +41,7 @@ in
       };
 
       # Staging
-      "site.vuks-den.duckdns.org" = {
+      "local.vuks.dev" = {
         root = "/var/www/staging/";
         listen = [
           {
@@ -51,7 +51,7 @@ in
         ];
         locations."/" = { };
       };
-      "media.vuks69.duckdns.org" = {
+      "media.local.vuks.dev" = {
         # basicAuthFile = "/var/www/.htpasswd";
         root = "/var/www/media/";
         listen = [
@@ -63,6 +63,5 @@ in
         locations."/" = { };
       };
     };
-
   };
 }
