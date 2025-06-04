@@ -21,6 +21,7 @@ in
 
     # Services
     ./ddclient.nix
+    ./factorio.nix
     ./jellyfin.nix
     ./monitoring.nix
     ./proxy-manager.nix
