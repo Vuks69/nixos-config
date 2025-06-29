@@ -40,7 +40,7 @@ in
             ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s ${vpnNetwork} -o ${wgExtInterface} -j MASQUERADE
           '';
 
-          privateKeyFile = "${config.age.secrets.wireguard-privkey.file}";
+          privateKeyFile = config.age.secrets.wireguard-privkey.path;
 
           peers = [
             {

@@ -12,7 +12,7 @@
     extraConfig = ''
       # duckdns
       protocol=duckdns
-      password=${builtins.readFile config.age.secrets.ddns-duckdns.file}
+      password=${builtins.readFile config.age.secrets.ddns-duckdns.path}
       vuks69
     '';
   };
