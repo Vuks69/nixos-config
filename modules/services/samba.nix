@@ -18,6 +18,16 @@
         # Allowlist takes precedence
         "allow hosts" = "192.168.0.";
         "deny hosts" = "ALL";
+
+        ### TODO set up a cronjob to remove old files
+        # # Enable recycling bin
+        # "vfs object" = "recycle";
+        # "recycle:repository" = "/warehouse/.recycle";
+        # "recycle:keeptree" = "yes";
+        # "recycle:versions" = "yes";
+        # "recycle:touch" = "yes";
+        # "recycle:exclude_dir" = "/tmp /TMP /temp /TEMP /public /cache /CACHE";
+        # "recycle:exclude" = "*.TMP *.tmp *.temp ~$* *.log *.bak";
       };
       public = {
         path = "/warehouse/public";

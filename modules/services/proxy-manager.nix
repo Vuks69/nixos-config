@@ -12,6 +12,7 @@
   networking.firewall.allowedUDPPorts = [ 80 81 443 ];
 
   virtualisation.oci-containers.containers.nginxproxymanager = {
+    # TODO switch to NPMPlus
     image = "jc21/nginx-proxy-manager:latest";
     ports = [
       "80:80"

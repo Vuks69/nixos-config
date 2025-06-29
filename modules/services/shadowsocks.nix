@@ -3,6 +3,8 @@ let
   shadowsocksPort = 63814;
 in
 {
+  age.secrets.shadowsocks.file = ../../secrets/shadowsocks/password.age;
+
   environment.systemPackages = with pkgs; [
     shadowsocks-rust
   ];
@@ -37,7 +39,7 @@ in
           {
             "server": "0.0.0.0",
             "server_port": ${builtins.toString shadowsocksPort},
-            "password": "${lib.removeSuffix "\n" (builtins.readFile /etc/shadowsocks/auth/van-guest.pass)}",
+            "password": "${builtins.readFile config.age.secrets.shadowsocks.path}",
             "method": "aes-256-gcm",
             "fast_open": true
           }

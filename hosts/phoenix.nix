@@ -3,74 +3,39 @@
 #          given service or functionality for the first time
 # ALWAYS:  actions that have to be done on every rebuild
 
-{ pkgs, ... }:
-let
-  # ONETIME
-  # sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos-unstable
-  # sudo nix-channel --update
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-in
+{ config, pkgs, unstable, ... }:
 {
   imports = [
     # System configurations
-    ./hardware-configuration.nix
-    ./nvidia.nix
-    ./system.nix
-    ./ups.nix
-    ./zfs.nix
+    ../modules/common/system.nix
+    ../modules/common/x11-i3.nix
+    ../modules/hardware/hardware-configuration.nix
+    ../modules/hardware/nvidia.nix
+    ../modules/services/ups.nix
+    ../modules/services/zfs.nix
 
     # Services
-    ./ddclient.nix
-    ./factorio.nix
-    ./jellyfin.nix
-    ./monitoring.nix
-    ./proxy-manager.nix
-    ./qbittorrent.nix
-    ./quassel.nix
-    ./samba.nix
-    ./shadowsocks.nix
-    ./webserver.nix
-    ./wireguard.nix
-    ./wstunnel.nix
+    # ../modules/services/ddclient.nix
+    ../modules/services/factorio.nix
+    ../modules/services/jellyfin.nix
+    ../modules/services/monitoring.nix
+    ../modules/services/proxy-manager.nix
+    ../modules/services/qbittorrent.nix
+    ../modules/services/quassel.nix
+    ../modules/services/samba.nix
+    # ../modules/services/shadowsocks.nix
+    ../modules/services/webserver.nix
+    ../modules/services/wireguard.nix
+    ../modules/services/wstunnel.nix
   ];
 
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
+  age.identityPaths = [
+    "/etc/ssh/agenix_ed25519"
+  ];
+  
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    displayManager.lightdm = {
-      enable = true;
-      greeter.enable = true;
-    };
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        rofi
-        i3status
-        i3lock
-      ];
-    };
-    excludePackages = with pkgs; [
-      xterm
-    ];
-    xkb.layout = "pl";
-  };
-
-  services.displayManager.defaultSession = "none+i3";
-
-  fonts = {
-    packages = with pkgs; [
-      nerd-fonts.fira-code
-      nerd-fonts.noto
-    ];
-    fontconfig.defaultFonts = {
-      monospace = [ "FiraCode Nerd Font Mono Ret" ];
-      emoji = [ "Noto Color Emoji" ];
-    };
-  };
-
-  # ONETIME(PER_USER): Set a password with ‘passwd’ if login needed
+  # ONETIME(PER_USER): Set a password with 'passwd' if login needed
   users = {
     groups = {
       smb-users = { };
@@ -227,7 +192,7 @@ in
   # No touching below this line.
   # Copy the NixOS configuration file and link it from the resulting system (/run/current-system/configuration.nix).
   # This is useful in case you accidentally delete configuration.nix.
-  system.copySystemConfiguration = true;
+  system.copySystemConfiguration = false; # cannot be used with flakes
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .

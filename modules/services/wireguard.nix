@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   # reused variables
   serverIPs = [ "10.0.0.1/24" ];
@@ -8,6 +8,8 @@ let
   wgInterface = "wg0";
 in
 {
+  age.secrets.wireguard-privkey.file = ../../secrets/wireguard/server.key.age;
+
   # https://wiki.nixos.org/wiki/WireGuard
   networking = {
     # enable NAT
@@ -38,7 +40,7 @@ in
             ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s ${vpnNetwork} -o ${wgExtInterface} -j MASQUERADE
           '';
 
-          privateKeyFile = "/etc/wireguard/server.key";
+          privateKeyFile = "${config.age.secrets.wireguard-privkey.file}";
 
           peers = [
             {
