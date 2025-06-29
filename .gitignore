@@ -1,2 +1,10 @@
 result
 dev/
+
+# Ensure secrets are not tracked
+secrets/*
+!secrets/
+!secrets/*/
+secrets/*/*
+!secrets/**/*.age
+!secrets/**/*.nix
