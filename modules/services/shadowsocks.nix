@@ -14,30 +14,32 @@ in
     description = "Shadowsocks server";
     after = [ "network-online.target" ];
     requires = [ "network-online.target" ];
+    wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.shadowsocks-rust}/bin/ssserver -c /etc/shadowsocks/config.json";
-      Restart = "always";
+      ExecStart = "${pkgs.shadowsocks-rust}/bin/ssserver -c /run/shadowsocks/config.json";
+      Restart = "on-failure";
       RestartSec = "30";
     };
     preStart = ''
-      install -m 0700 -d /etc/shadowsocks
-      password=$(head -n1 ${config.age.secrets.shadowsocks.path} | tr -d '\n')
-      cat >/etc/shadowsocks/config.json <<EOF
+      install -m 0700 -d /run/shadowsocks
+      umask 077
+      cat >/run/shadowsocks/config.json <<EOF
       {
         "servers": [
           {
             "server": "0.0.0.0",
             "server_port": ${toString shadowsocksPort},
-            "password": "$password",
+            "password": "$(head -n1 ${config.age.secrets.shadowsocks.path} | tr -d '\n')",
             "method": "aes-256-gcm",
             "fast_open": true
           }
         ]
       }
       EOF
-      chmod 600 /etc/shadowsocks/config.json
     '';
-    restartTriggers = [ config.age.secrets.shadowsocks.path ];
+    restartTriggers = [
+      config.age.secrets.shadowsocks.path
+    ];
   };
 
   networking.firewall.allowedTCPPorts = [ shadowsocksPort ];
