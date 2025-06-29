@@ -18,6 +18,7 @@ in
 
   services.zabbixServer = {
     enable = true;
+    package = pkgs.zabbix72.server;
     settings = {
       CacheSize = "1G";
     };
@@ -32,12 +33,14 @@ in
   # netsh advfirewall firewall add rule name="Open Zabbix trapper port 10051 outbound" dir=out action=allow protocol=TCP localport=10051
   services.zabbixAgent = {
     enable = true;
+    package = pkgs.zabbix72.agent;
     server = "127.0.0.1";
   };
 
   services.zabbixWeb = {
     enable = true;
-    hostname = "zabbix.vuks-den.duckdns.org";
+    package = pkgs.zabbix72.web;
+    hostname = "zabbix.local.vuks.dev";
     server = {
       address = "127.0.0.1";
       port = zabbixServerListenPort;
@@ -52,9 +55,6 @@ in
       ];
     };
   };
-
-  # Zabbix does not support PHP 8.4 yet, so we force 8.3
-  services.phpfpm.phpPackage = pkgs.php83;
 
   services.smartd = {
     # Self note: the USB drive is not supported by smartd - shuck it asap
