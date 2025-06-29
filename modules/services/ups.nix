@@ -1,6 +1,8 @@
-{ ... }:
+{ config, ... }:
 
 {
+  age.secrets.upsmon.file = ../../secrets/upsmon/password.age;
+
   power.ups = {
     enable = true;
 
@@ -13,7 +15,7 @@
     };
 
     users."upsmon" = {
-      passwordFile = "/home/upsmon/upsmon.password";
+      passwordFile = config.age.secrets.upsmon.path;
       upsmon = "primary";
     };
 

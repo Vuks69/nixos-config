@@ -7,6 +7,7 @@ in
 {
   "ddns/duckdns.token.age".publicKeys = [ phoenix ];
   "shadowsocks/password.age".publicKeys = [ phoenix ];
+  "upsmon/password.age".publicKeys = [ phoenix ];
   "wireguard/server.key.age".publicKeys = [ phoenix ];
   "wireguard/server.pub.age".publicKeys = [ phoenix ];
   "wstunnel/envFile.age".publicKeys = [ phoenix ];

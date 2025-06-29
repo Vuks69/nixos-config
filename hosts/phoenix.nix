@@ -39,7 +39,6 @@
   users = {
     groups = {
       smb-users = { };
-      upsmon = { };
       nginx = { };
       qbittorrent = { };
       warehouse = { };
@@ -70,15 +69,6 @@
           "warehouse"
         ];
         description = "SMB share guest user account";
-      };
-      upsmon = {
-        isSystemUser = true;
-        # ONETIME: store this user's password in home (plaintext)
-        #          this is needed for providing the password to UPS monitoring - see ups.nix
-        home = "/home/upsmon";
-        createHome = true;
-        group = "upsmon";
-        description = "UPS monitoring technical user";
       };
       nginx = {
         isSystemUser = true;
