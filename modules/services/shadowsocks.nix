@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 let
   shadowsocksPort = 63814;
 in
@@ -19,32 +19,27 @@ in
       Restart = "always";
       RestartSec = "30";
     };
-    restartTriggers = [
-      config.environment.etc."shadowsocks/config.json".source
-    ];
-  };
-
-  networking.firewall.allowedTCPPorts = [ shadowsocksPort ];
-  networking.firewall.allowedUDPPorts = [ shadowsocksPort ];
-
-  # mkdir -p /etc/shadowsocks/auth
-  # ssservice genkey -m "aes-128-gcm" >/etc/shadowsocks/auth/van-guest.pass
-  # Warning: this adds a newline (0a byte) at the end
-  #   of the file for whatever reason. Remove it or ss won't start.
-  environment.etc."shadowsocks/config.json" = {
-    mode = "0600";
-    text = ''
+    preStart = ''
+      install -m 0700 -d /etc/shadowsocks
+      password=$(head -n1 ${config.age.secrets.shadowsocks.path} | tr -d '\n')
+      cat >/etc/shadowsocks/config.json <<EOF
       {
         "servers": [
           {
             "server": "0.0.0.0",
-            "server_port": ${builtins.toString shadowsocksPort},
-            "password": "${builtins.readFile config.age.secrets.shadowsocks.path}",
+            "server_port": ${toString shadowsocksPort},
+            "password": "$password",
             "method": "aes-256-gcm",
             "fast_open": true
           }
         ]
       }
+      EOF
+      chmod 600 /etc/shadowsocks/config.json
     '';
+    restartTriggers = [ config.age.secrets.shadowsocks.path ];
   };
+
+  networking.firewall.allowedTCPPorts = [ shadowsocksPort ];
+  networking.firewall.allowedUDPPorts = [ shadowsocksPort ];
 }

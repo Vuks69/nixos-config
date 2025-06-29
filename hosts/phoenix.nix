@@ -23,7 +23,7 @@
     ../modules/services/qbittorrent.nix
     ../modules/services/quassel.nix
     ../modules/services/samba.nix
-    # ../modules/services/shadowsocks.nix
+    ../modules/services/shadowsocks.nix
     ../modules/services/webserver.nix
     ../modules/services/wireguard.nix
     ../modules/services/wstunnel.nix
@@ -32,7 +32,7 @@
   age.identityPaths = [
     "/etc/ssh/agenix_ed25519"
   ];
-  
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # ONETIME(PER_USER): Set a password with 'passwd' if login needed
