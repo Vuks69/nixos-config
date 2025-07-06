@@ -1,13 +1,12 @@
 { pkgs, ... }:
 {
+  services.displayManager.ly = {
+    enable = true;
+  };
+
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-
-    displayManager.lightdm = {
-      enable = true;
-      greeter.enable = true;
-    };
 
     windowManager.i3 = {
       enable = true;
