@@ -5,7 +5,7 @@ let
 in
 {
   services.netdata = {
-    enable = true;
+    enable = false;
     package = pkgs.netdata.override { withCloudUi = true; };
     config = {
       db = {

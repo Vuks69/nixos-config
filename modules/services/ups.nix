@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   age.secrets.upsmon.file = ../../secrets/upsmon/password.age;
@@ -21,4 +21,9 @@
 
     upsmon.monitor."apc-cs500".user = "upsmon";
   };
+
+  environment.systemPackages = [ pkgs.jq ];
+  services.zabbixAgent.settings.UserParameter = lib.optionals (config.services.zabbixAgent.enable) [
+    "upsc.get[*],${pkgs.nut}/bin/upsc $1 | ${pkgs.jq}/bin/jq -Rn '[inputs] | map(if contains(\": \") then [.[:index(\": \")], .[index(\": \")+2:]] else [., \"\"] end | {(.[0]): .[1]}) | add'"
+  ];
 }
