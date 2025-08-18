@@ -11,7 +11,7 @@
     ../modules/common/x11-i3.nix
     ../modules/hardware/hardware-configuration.nix
     ../modules/hardware/nvidia.nix
-    ../modules/services/ups.nix
+    # ../modules/services/ups.nix # UPS broke
     ../modules/services/zfs.nix
 
     # Services
