@@ -19,29 +19,24 @@
     {
       device = "phoenix-pool/root";
       fsType = "zfs";
-      # the zfsutil option is needed when mounting zfs datasets without "legacy" mountpoints
-      options = [ "zfsutil" ];
     };
 
   fileSystems."/nix" =
     {
       device = "phoenix-pool/nix";
       fsType = "zfs";
-      options = [ "zfsutil" ];
     };
 
   fileSystems."/var" =
     {
       device = "phoenix-pool/var";
       fsType = "zfs";
-      options = [ "zfsutil" ];
     };
 
   fileSystems."/home" =
     {
       device = "phoenix-pool/home";
       fsType = "zfs";
-      options = [ "zfsutil" ];
     };
 
   fileSystems."/boot" =
@@ -63,6 +58,7 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wg0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
