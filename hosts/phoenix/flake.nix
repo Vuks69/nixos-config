@@ -7,26 +7,29 @@
 {
   imports = [
     # System configurations
-    ../modules/common/system.nix
-    ../modules/common/x11-i3.nix
-    ../modules/hardware/hardware-configuration.nix
-    ../modules/hardware/nvidia.nix
+    ./hardware-configuration.nix
+    ../../modules/common/system.nix
+    ../../modules/common/x11-i3.nix
+    ../../modules/hardware/nvidia.nix
     # ../modules/services/ups.nix # UPS broke
-    ../modules/services/zfs.nix
+    (import ../../modules/services/zfs.nix {
+      hostId = "39ace0d9";
+      extraPools = [ "tank" ];
+    })
 
     # Services
-    ../modules/services/ddclient.nix
-    ../modules/services/factorio.nix
-    ../modules/services/jellyfin.nix
-    ../modules/services/monitoring.nix
-    ../modules/services/proxy-manager.nix
-    ../modules/services/qbittorrent.nix
-    ../modules/services/quassel.nix
-    ../modules/services/samba.nix
-    ../modules/services/shadowsocks.nix
-    ../modules/services/webserver.nix
-    ../modules/services/wireguard.nix
-    ../modules/services/wstunnel.nix
+    ../../modules/services/ddclient.nix
+    ../../modules/services/factorio.nix
+    ../../modules/services/jellyfin.nix
+    ../../modules/services/monitoring.nix
+    ../../modules/services/proxy-manager.nix
+    ../../modules/services/qbittorrent.nix
+    ../../modules/services/quassel.nix
+    ../../modules/services/samba.nix
+    ../../modules/services/shadowsocks.nix
+    ../../modules/services/webserver.nix
+    ../../modules/services/wireguard.nix
+    ../../modules/services/wstunnel.nix
   ];
 
   age.identityPaths = [

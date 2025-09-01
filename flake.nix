@@ -13,7 +13,7 @@
         system = "x86_64-linux";
         modules = [
           agenix.nixosModules.default
-          ./hosts/phoenix.nix
+          ./hosts/phoenix/flake.nix
           {
             environment.systemPackages = [ agenix.packages."x86_64-linux".default ];
           }
