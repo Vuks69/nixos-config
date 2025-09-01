@@ -18,7 +18,9 @@ in
     serviceConfig = {
       User = "qbittorrent";
       Group = "qbittorrent";
-      WorkingDirectory = "/home/qbittorrent";
+      StateDirectory = "qbittorrent";
+      WorkingDirectory = "/var/lib/qbittorrent";
+      Environment = "HOME=/var/lib/qbittorrent";
       ExecStart = "${pkgs.qbittorrent-nox}/bin/qbittorrent-nox --webui-port=${builtins.toString webUiPort} --confirm-legal-notice";
       Restart = "always";
       RestartSec = "30";

@@ -83,8 +83,6 @@
       };
       qbittorrent = {
         isSystemUser = true;
-        home = "/home/qbittorrent";
-        createHome = true;
         group = "qbittorrent";
         extraGroups = [
           "warehouse"
