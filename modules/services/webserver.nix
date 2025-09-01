@@ -54,6 +54,9 @@ in
       "media.local.vuks.dev" = {
         # basicAuthFile = "/var/www/.htpasswd";
         root = "/var/www/media/";
+        extraConfig = ''
+          autoindex on;
+        '';
         listen = [
           {
             addr = "127.0.0.1";

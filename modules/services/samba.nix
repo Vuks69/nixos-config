@@ -42,6 +42,13 @@
         writeable = "yes";
         "valid users" = "vuks";
       };
+      media = {
+        path = "/var/www";
+        public = "no";
+        browseable = "no";
+        writeable = "yes";
+        "valid users" = "vuks";
+      };
     };
   };
 }
