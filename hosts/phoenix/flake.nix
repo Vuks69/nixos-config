@@ -3,7 +3,7 @@
 #          given service or functionality for the first time
 # ALWAYS:  actions that have to be done on every rebuild
 
-{ config, pkgs, unstable, ... }:
+{ config, pkgs, nixos-unstable, nixpkgs-unstable, ... }:
 {
   imports = [
     # System configurations
@@ -100,11 +100,13 @@
     gh
     diff-so-fancy
     nixpkgs-fmt
+    nixpkgs-review
     nil
     gnumake
 
     # AI stuff
-    unstable.code-cursor
+    nixos-unstable.code-cursor
+    nixpkgs-unstable.kiro
     shell-gpt
 
     # Utility tools

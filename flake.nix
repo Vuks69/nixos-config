@@ -3,11 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, unstable, agenix, ... }@inputs: {
+  outputs = { self, nixpkgs, nixos-unstable, nixpkgs-unstable, agenix, ... }@inputs: {
     nixosConfigurations = {
       phoenix = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -19,7 +20,11 @@
           }
         ];
         specialArgs = {
-          unstable = import unstable {
+          nixos-unstable = import nixos-unstable  {
+            system = "x86_64-linux";
+            config = { allowUnfree = true; };
+          };
+          nixpkgs-unstable = import nixpkgs-unstable  {
             system = "x86_64-linux";
             config = { allowUnfree = true; };
           };
