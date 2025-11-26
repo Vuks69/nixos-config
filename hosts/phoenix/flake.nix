@@ -12,10 +12,7 @@
     ../../modules/common/x11-i3.nix
     ../../modules/hardware/nvidia.nix
     # ../modules/services/ups.nix # UPS broke
-    (import ../../modules/services/zfs.nix {
-      hostId = "39ace0d9";
-      extraPools = [ "tank" ];
-    })
+    ../../modules/services/zfs.nix
 
     # Services
     ../../modules/services/ddclient.nix
@@ -31,6 +28,9 @@
     ../../modules/services/wireguard.nix
     ../../modules/services/wstunnel.nix
   ];
+
+  zfs.hostId = "39ace0d9";
+  zfs.extraPools = [ "tank" ];
 
   age.identityPaths = [
     "/etc/ssh/agenix_ed25519"
