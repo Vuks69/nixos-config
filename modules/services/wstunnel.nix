@@ -7,18 +7,18 @@ in
   services.wstunnel = {
     enable = true;
     servers.van-wireguard = {
-      loggingLevel = "info";
       enable = true;
-      listen.host = "0.0.0.0";
-      listen.port = wstunnelPort;
-      enableHTTPS = false;
-      restrictTo = [
+      listen = {
+        host = "0.0.0.0";
+        port = wstunnelPort;
+        enableHTTPS = false;
+      };
+      settings.restrict-to = [
         {
           host = "0.0.0.0";
           port = wireguardPort;
         }
       ];
-      # environmentFile = "/etc/wstunnel/password";
     };
   };
   networking.firewall.allowedTCPPorts = [ wstunnelPort ];

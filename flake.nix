@@ -2,7 +2,7 @@
   description = "NixOS configuration (flake)";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     agenix.url = "github:ryantm/agenix";
@@ -20,11 +20,11 @@
           }
         ];
         specialArgs = {
-          nixos-unstable = import nixos-unstable  {
+          nixos-unstable = import nixos-unstable {
             system = "x86_64-linux";
             config = { allowUnfree = true; };
           };
-          nixpkgs-unstable = import nixpkgs-unstable  {
+          nixpkgs-unstable = import nixpkgs-unstable {
             system = "x86_64-linux";
             config = { allowUnfree = true; };
           };
