@@ -5,6 +5,8 @@
 
 { config, pkgs, nixos-unstable, nixpkgs-unstable, ... }:
 {
+  networking.hostName = "phoenix";
+
   imports = [
     # System configurations
     ./hardware-configuration.nix
