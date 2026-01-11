@@ -105,9 +105,11 @@
     nixpkgs-review
     nil
     gnumake
+    nixpkgs-unstable.devenv
 
     # AI stuff
     nixos-unstable.code-cursor
+    nixos-unstable.opencode
     nixpkgs-unstable.kiro
     shell-gpt
 

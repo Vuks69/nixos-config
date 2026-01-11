@@ -1,21 +1,20 @@
-.PHONY: test boot switch build dry-build upgrade full-maintenance generate-config list-generations clean full-maintenance
+.PHONY: test boot switch build dry-build upgrade update generate-config list-generations clean full-maintenance
 
-# NIXCONFIG = ./configuration.nix # relative to the makefile
-# NIXFLAGS = -I nixos-config=$(NIXCONFIG)
-NIXFLAGS =
-NIXCMD = sudo nixos-rebuild
-NIXFLAKE = --flake .\#phoenix
+HOST ?= $(shell hostname)
+NIXFLAGS :=
+NIXCMD := sudo nixos-rebuild
+NIXFLAKE := --flake .\#$(HOST)
 
 switch test boot build dry-build:
 	$(NIXCMD) $(NIXFLAGS) $@ $(NIXFLAKE)
 
-upgrade:
-	$(NIXCMD) $(NIXFLAGS) switch --upgrade $(NIXFLAKE)
+update:
+	nix flake update
 
-full-maintenance: clean generate-config upgrade
+upgrade: update switch
 
 generate-config:
-	sudo nixos-generate-config --show-hardware-config | nixpkgs-fmt >modules/hardware/hardware-configuration.nix
+	sudo nixos-generate-config --show-hardware-config | nixpkgs-fmt >hosts/$(HOST)/hardware-configuration.nix
 
 list-generations:
 	sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
