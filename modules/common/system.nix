@@ -30,4 +30,6 @@
 
   # Allow installing proprietary crap
   nixpkgs.config.allowUnfree = true;
+
+  services.fwupd.enable = true;
 }

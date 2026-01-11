@@ -134,7 +134,6 @@
     lm_sensors
     smartmontools
     lxqt.lxqt-policykit
-    fwupd
   ];
   environment.variables = {
     TERMINAL = "kitty";
