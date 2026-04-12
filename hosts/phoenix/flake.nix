@@ -17,7 +17,7 @@
     ../../modules/services/zfs.nix
 
     # Services
-    ../../modules/services/ddclient.nix
+    # ../../modules/services/ddclient.nix # not using duckdns for now
     ../../modules/services/factorio.nix
     ../../modules/services/jellyfin.nix
     ../../modules/services/monitoring.nix
