@@ -8,7 +8,7 @@
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, nixos-unstable, nixpkgs-unstable, agenix, ... }@inputs: {
+  outputs = { nixpkgs, nixos-unstable, nixpkgs-unstable, agenix, ... }: {
     nixosConfigurations = {
       phoenix = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
