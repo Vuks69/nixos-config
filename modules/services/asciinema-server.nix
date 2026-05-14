@@ -28,6 +28,9 @@ in
       ];
       dependsOn = [ "postgres" ];
       autoStart = true;
+      extraOptions = [
+        "--memory=1g"
+      ];
     };
 
     postgres = {
@@ -44,6 +47,7 @@ in
         "--health-timeout=10s"
         "--health-start-period=10s"
         "--health-retries=3"
+        "--memory=1g"
       ];
     };
   };

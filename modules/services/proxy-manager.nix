@@ -21,6 +21,7 @@
     ];
     extraOptions = [
       "--network=host"
+      "--memory=1g"
     ];
     volumes = [
       "/var/local/nginx/data:/data"
