@@ -1,6 +1,6 @@
 # Mostly low-level system configuration that won't have to be touched often if at all.
 
-{ ... }:
+{ lib, ... }:
 
 {
   # Use the systemd-boot EFI boot loader.
@@ -13,10 +13,10 @@
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   networking.networkmanager.settings.main.dns = "none"; # Ignore DHCP-provided DNS.
   networking.nameservers = [ "9.9.9.9" "1.1.1.1" "4.4.4.4" "8.8.8.8" ]; # Use Quad9, Cloudflare, and Google DNS servers.
+  networking.useDHCP = lib.mkDefault true;
   networking.dhcpcd.extraConfig = ''
     nohook resolv.conf
   '';
-
   # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
