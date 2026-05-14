@@ -81,7 +81,7 @@
   # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
     # Development tools
-    vscode
+    nixpkgs-unstable.vscode
     tig
     gh
     diff-so-fancy
@@ -110,6 +110,7 @@
     curl
     mailutils
     fastfetch
+    ripgrep
 
     # System tools
     dig
