@@ -24,11 +24,11 @@
     ../../modules/services/monitoring.nix
     ../../modules/services/proxy-manager.nix
     ../../modules/services/qbittorrent.nix
-    ../../modules/services/quassel.nix
+    # ../../modules/services/quassel.nix
     ../../modules/services/samba.nix
-    ../../modules/services/shadowsocks.nix
+    # ../../modules/services/shadowsocks.nix
     ../../modules/services/webserver.nix
-    ../../modules/services/wireguard.nix
+    # ../../modules/services/wireguard.nix
     ../../modules/services/wstunnel.nix
   ];
 
