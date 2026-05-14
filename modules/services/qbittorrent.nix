@@ -13,4 +13,6 @@ in
     openFirewall = true;
     extraArgs = [ "--confirm-legal-notice" ];
   };
+
+  users.users.qbittorrent.extraGroups = [ "warehouse" ];
 }

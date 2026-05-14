@@ -46,8 +46,6 @@
   users = {
     groups = {
       smb-users = { };
-      nginx = { };
-      qbittorrent = { };
       warehouse = { };
       www = { };
     };
@@ -76,22 +74,6 @@
           "warehouse"
         ];
         description = "SMB share guest user account";
-      };
-      nginx = {
-        isSystemUser = true;
-        group = "nginx";
-        extraGroups = [
-          "www"
-        ];
-        description = "Nginx Proxy Manager technical user";
-      };
-      qbittorrent = {
-        isSystemUser = true;
-        group = "qbittorrent";
-        extraGroups = [
-          "warehouse"
-        ];
-        description = "qBittorrent technical user";
       };
     };
   };

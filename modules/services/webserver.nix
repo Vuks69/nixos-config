@@ -67,4 +67,6 @@ in
       };
     };
   };
+
+  users.users.nginx.extraGroups = [ "www" ];
 }
