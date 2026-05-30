@@ -18,7 +18,7 @@ in
 
   services.zabbixServer = {
     enable = true;
-    package = pkgs.zabbix72.server;
+    package = pkgs.zabbix74.server;
     settings = {
       CacheSize = "1G";
     };
@@ -33,13 +33,13 @@ in
   # netsh advfirewall firewall add rule name="Open Zabbix trapper port 10051 outbound" dir=out action=allow protocol=TCP localport=10051
   services.zabbixAgent = {
     enable = true;
-    package = pkgs.zabbix72.agent;
+    package = pkgs.zabbix74.agent;
     server = "127.0.0.1";
   };
 
   services.zabbixWeb = {
     enable = true;
-    package = pkgs.zabbix72.web;
+    package = pkgs.zabbix74.web;
     hostname = "zabbix.local.vuks.dev";
     server = {
       address = "127.0.0.1";
