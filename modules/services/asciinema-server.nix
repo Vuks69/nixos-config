@@ -17,8 +17,8 @@ in
       volumes = [ "/var/lib/asciinema:/var/lib/asciinema" ];
       environment = {
         URL_HOST = "asciinema.vuks.dev";
-        URL_PORT = "80";
-        URL_SCHEME = "http";
+        URL_PORT = "443";
+        URL_SCHEME = "https";
         SIGN_UP_DISABLED = "true";
       };
       ports = [
