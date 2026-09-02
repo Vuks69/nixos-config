@@ -21,6 +21,7 @@
     ../../modules/services/asciinema-server.nix
     ../../modules/services/factorio.nix
     ../../modules/services/jellyfin.nix
+    ../../modules/services/miniflux.nix
     ../../modules/services/monitoring.nix
     ../../modules/services/proxy-manager.nix
     ../../modules/services/qbittorrent.nix
