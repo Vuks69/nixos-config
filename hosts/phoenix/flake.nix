@@ -91,6 +91,7 @@
     gnumake
     nixpkgs-unstable.devenv
     uv
+    nixd
 
     # AI stuff
     nixos-unstable.code-cursor
