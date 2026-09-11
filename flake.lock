@@ -43,6 +43,24 @@
         "type": "github"
       }
     },
+    "flakelight": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1788802495,
+        "narHash": "sha256-AoBbJfYYetACltpLjX9uuHjGHVcB0kBcEyz/b3HdozE=",
+        "owner": "nix-community",
+        "repo": "flakelight",
+        "rev": "b82ba6cb7b10b836da8e4d52faff281446f5bd30",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "flakelight",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -128,12 +146,44 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1788752844,
+        "narHash": "sha256-jaBxqP3GfXq5Ilyfz5wulKO7xyBUmToFxqTU+caFyus=",
+        "rev": "dc5d91f840324650bac8c379428c7037a416959a",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1068949.dc5d91f84032/nixexprs.tar.zst"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst"
+      }
+    },
+    "phrack-rss": {
+      "inputs": {
+        "flakelight": "flakelight"
+      },
+      "locked": {
+        "lastModified": 1789142854,
+        "narHash": "sha256-NZIsQXzkcrL+lRXyLnNVJrzLlx/7SqAkD4S3U1zw8EA=",
+        "owner": "Vuks69",
+        "repo": "phrack-rss-go",
+        "rev": "b787d02e92231f66d34a61a7a2d6310460d30be0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Vuks69",
+        "repo": "phrack-rss-go",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
         "nixos-unstable": "nixos-unstable",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "phrack-rss": "phrack-rss"
       }
     },
     "systems": {

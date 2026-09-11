@@ -23,6 +23,7 @@
     ../../modules/services/jellyfin.nix
     ../../modules/services/miniflux.nix
     ../../modules/services/monitoring.nix
+    ../../modules/services/phrack-rss.nix
     ../../modules/services/proxy-manager.nix
     ../../modules/services/qbittorrent.nix
     # ../../modules/services/quassel.nix
