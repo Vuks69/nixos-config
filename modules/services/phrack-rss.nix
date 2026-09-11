@@ -19,8 +19,8 @@ in
         "PHRACK_RSS_DATA_DIR=${dataDir}"
         "PHRACK_RSS_LISTEN=127.0.0.1"
         "PHRACK_RSS_PORT=${toString port}"
-        "PHRACK_RSS_INTERVAL=1h"
-        "PHRACK_RSS_FEED_LENGTH=20"
+        "PHRACK_RSS_INTERVAL=24h"
+        "PHRACK_RSS_FEED_LENGTH=40"
       ];
       StateDirectory = "phrack-rss";
       Restart = "on-failure";
