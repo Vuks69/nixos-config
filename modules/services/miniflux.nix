@@ -10,6 +10,8 @@ in
     adminCredentialsFile = config.age.secrets.miniflux_admin_credentials.path;
     config = {
       LISTEN_ADDR = "127.0.0.1:${listenAddr}";
+      POLLING_FREQUENCY = "30";
+      POLLING_SCHEDULER = "entry_frequency";
     };
   };
 }
