@@ -12,6 +12,7 @@ in
       LISTEN_ADDR = "127.0.0.1:${listenAddr}";
       POLLING_FREQUENCY = "30";
       POLLING_SCHEDULER = "entry_frequency";
+      SCHEDULER_ENTRY_FREQUENCY_MAX_INTERVAL = "240";
       FETCHER_ALLOW_PRIVATE_NETWORKS = 1;
     };
   };
