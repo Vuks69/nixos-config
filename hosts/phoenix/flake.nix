@@ -30,7 +30,7 @@
     ../../modules/services/samba.nix
     # ../../modules/services/shadowsocks.nix
     ../../modules/services/webserver.nix
-    # ../../modules/services/wireguard.nix
+    ../../modules/services/wireguard.nix
     ../../modules/services/wstunnel.nix
   ];
 
@@ -100,12 +100,13 @@
     nixpkgs-unstable.devenv
     uv
     nixd
+    fd
 
     # AI stuff
-    nixos-unstable.code-cursor
+    # nixos-unstable.code-cursor
     nixos-unstable.opencode
-    nixpkgs-unstable.kiro
-    shell-gpt
+    # nixpkgs-unstable.kiro
+    # shell-gpt
 
     # Utility tools
     kitty
