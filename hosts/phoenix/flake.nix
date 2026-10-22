@@ -69,12 +69,18 @@
           "warehouse"
         ];
       };
-      smb-guest = {
+      empom = {
         isSystemUser = true;
         group = "smb-users";
         extraGroups = [
           "warehouse"
         ];
+      };
+      smb-guest = {
+        isSystemUser = true;
+        # Must not be in smb-users (would allow writes via write list on the
+        # public share) nor warehouse (unix-level write on group-writable files)
+        group = "nogroup";
         description = "SMB share guest user account";
       };
     };
