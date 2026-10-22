@@ -56,8 +56,8 @@ in
               allowedIPs = [ "10.0.0.3/32" ];
             }
             {
-              # v-guest
-              publicKey = "oL3qzHsMQPWK9ezDAoKyBC6bUC+HtCPbcH3cYFcx+h8=";
+              # empom
+              publicKey = "kSFMaHdSNNjbyLNmGEeu7sY2/FzySSXsckT5eaPGJHQ=";
               allowedIPs = [ "10.0.0.128/32" ];
             }
           ];
