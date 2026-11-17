@@ -34,6 +34,9 @@
     ../../modules/services/wstunnel.nix
   ];
 
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  
   zfs.hostId = "39ace0d9";
   zfs.extraPools = [ "tank" ];
   boot.kernelParams = [ "zfs.zfs_arc_max=8589934592" ]; # limit ARC to 8GB
