@@ -32,6 +32,30 @@
           phrack-rss = phrack-rss.packages."x86_64-linux".default;
         };
       };
+      robocop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          agenix.nixosModules.default
+          ./hosts/phoenix/robocop.nix
+          {
+            environment.systemPackages = [ agenix.packages."x86_64-linux".default ];
+          }
+        ];
+        specialArgs = {
+          nixos-unstable = import nixos-unstable {
+            system = "x86_64-linux";
+            config = {
+              allowUnfree = true;
+            };
+          };
+          nixpkgs-unstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
+            config = {
+              allowUnfree = true;
+            };
+          };
+        };
+      };
     };
   };
 }
