@@ -31,7 +31,7 @@
     ../../modules/services/samba.nix
     # ../../modules/services/shadowsocks.nix
     ../../modules/services/webserver.nix
-    ../../modules/services/wireguard.nix
+    ../../modules/services/wireguard-server.nix
     ../../modules/services/wstunnel.nix
   ];
 
