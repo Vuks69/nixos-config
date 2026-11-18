@@ -19,6 +19,7 @@
     # Services
     # ../../modules/services/ddclient.nix # not using duckdns for now
     # ../../modules/services/asciinema-server.nix # create an actual module with postgres stuff
+    ../../modules/services/archiveteam-warrior.nix
     ../../modules/services/factorio.nix
     ../../modules/services/jellyfin.nix
     ../../modules/services/miniflux.nix
