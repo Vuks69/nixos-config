@@ -13,6 +13,7 @@
     ./hardware-configuration.nix
     ../../modules/common/system.nix
     ../../modules/common/sway.nix
+    ./wireguard-client.nix
   ];
 
   #   age.identityPaths = [
